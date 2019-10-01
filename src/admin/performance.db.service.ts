@@ -1,10 +1,9 @@
 import { Injectable } from '@nestjs/common';
-import {Employee} from '../dtos/EmployeeDto';
 
 @Injectable()
 export class AdminDbService {
   private EMPLOYEE_LIST:
-      Array<Employee>
+      Array<{id: number, name: string, position: string, experience: number, nationality: string}>
       = [
       {id: 1, name: 'Jon Jones', position: 'Developer', experience: 2, nationality: 'USA'},
       {id: 2, name: 'Jacques Audiard', position: 'Tester', experience: 2, nationality: 'FR'},
@@ -13,15 +12,7 @@ export class AdminDbService {
       {id: 5, name: 'Thomas Wurz', position: 'Product owner', experience: 6, nationality: 'DE'}
     ];
 
-  getAllEmployees(): Array<Employee> {
+  getAllEmployees(): Array<{id: number, name: string, position: string, experience: number, nationality: string}> {
     return this.EMPLOYEE_LIST;
-  }
-
-  deleteEmployee(employeeId: number): Employee {
-      return this.EMPLOYEE_LIST.find((employee) => employee.id === Number(employeeId));
-  }
-
-  updateEmployee(employeeId: number): Employee {
-    return this.EMPLOYEE_LIST.find((employee) => employee.id === Number(employeeId));
   }
 }
