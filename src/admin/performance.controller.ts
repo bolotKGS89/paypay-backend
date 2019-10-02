@@ -18,8 +18,12 @@ export class PerformanceController {
   
     @Put()
     updatePerformace(@Body() performance: PerformanceDto, @Res() res) {
-      const updatedEmployee = this.performanceDbService.updatePeformance(performance.id);
-      res.status(HttpStatus.OK).json(updatedEmployee.employeeName);
+      try {
+        const updatedEmployee = this.performanceDbService.updatePeformance(performance.id);
+        res.status(HttpStatus.OK).json(updatedEmployee.employeeName);
+      } catch(e) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e.message);
+      }
     }
 
 }

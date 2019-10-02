@@ -8,17 +8,26 @@ export class FeedbackController {
 
     @Get()
     getAllFeedback(@Res() res) {
-        res.status(HttpStatus.ACCEPTED).json(this.feedbackDbService.getAllEmployees());
+      return res.status(HttpStatus.OK).json(this.feedbackDbService.getAllFeedbacks());
     }
 
     @Post()
     saveFeedback(@Body() feedback: FeedbackDto, @Res() res) {
-      res.status(HttpStatus.OK).json('success');
+      if(Object.keys(feedback).length == 0) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json('error');
+      }
+
+      return res.status(HttpStatus.OK).json('success');
+      
     }
   
     @Put()
     updateFeedback(@Body() feedback: FeedbackDto, @Res() res) {
-      const updatedFeedback = this.feedbackDbService.updateEmployee(feedback.id);
-      res.status(HttpStatus.OK).json(updatedFeedback.id);
+      try {
+        const updatedFeedback = this.feedbackDbService.updateFeedback(feedback.id);
+        return res.status(HttpStatus.OK).json(updatedFeedback.id);
+      } catch(e) {
+        return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e.message);
+      }
     }
 }

@@ -14,15 +14,15 @@ export class FeedbackDbService {
       {id: 5, name: 'Thomas Wurz', comment: Comment.WELL_DONE, feedbackText: 'Good dev'}
     ];
 
-  getAllEmployees(): Array<FeedbackDto> {
+  getAllFeedbacks(): Array<FeedbackDto> {
     return this.FEEDBACK_LIST;
   }
 
-  deleteEmployee(employeeId: number): FeedbackDto {
-      return this.FEEDBACK_LIST.find((employee) => employee.id === Number(employeeId));
+  deleteFeedback(feedbackId: number): FeedbackDto {
+      return this.FEEDBACK_LIST.find((employee) => employee.id === Number(feedbackId));
   }
 
-  updateEmployee(employeeId: number): FeedbackDto {
-    return this.FEEDBACK_LIST.find((employee) => employee.id === Number(employeeId));
+  updateFeedback(feedbackId: number): FeedbackDto {
+    return this.FEEDBACK_LIST.find((employee) => employee.id === Number(feedbackId));
   }
 }

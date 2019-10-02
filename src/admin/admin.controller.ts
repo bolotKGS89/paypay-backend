@@ -8,23 +8,35 @@ export class AdminController {
 
   @Get()
   getEmployees(@Res() res) {
-     res.status(HttpStatus.OK).json(this.adminDbService.getAllEmployees());
+     return res.status(HttpStatus.OK).json(this.adminDbService.getAllEmployees());
   }
 
   @Delete(':id')
   deleteEmployee(@Param() param, @Res() res) {
-    const employee = this.adminDbService.deleteEmployee(param.id);
-    res.status(HttpStatus.OK).json(employee.name);
+    try {
+      const employee = this.adminDbService.deleteEmployee(param.id);
+      return res.status(HttpStatus.OK).json(employee.name);
+    } catch(e) {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e.message);
+    }
   }
 
   @Post()
   saveEmployee(@Body() employee: EmployeeDto, @Res() res) {
-    res.status(HttpStatus.OK).json(employee.name);
+    try {
+      return res.status(HttpStatus.OK).json(employee.name);
+    } catch(e) {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e.message);
+    }
   }
 
   @Put()
   updateEmployee(@Body() employee: EmployeeDto, @Res() res) {
-    const updatedEmployee = this.adminDbService.updateEmployee(employee.id);
-    res.status(HttpStatus.OK).json(updatedEmployee.name);
+    try {
+      const updatedEmployee = this.adminDbService.updateEmployee(employee.id);
+      return res.status(HttpStatus.OK).json(updatedEmployee.name);
+    } catch(e) {
+      return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json(e.message);
+    }
   }
 }
