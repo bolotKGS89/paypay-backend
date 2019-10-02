@@ -39,3 +39,10 @@ $ npm run start:dev
 # production mode
 $ npm run start:prod
 ```
+
+
+## Running the app
+ go to /test directory
+```bash
+$ npm run test
+```
