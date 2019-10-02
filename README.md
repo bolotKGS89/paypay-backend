@@ -41,7 +41,7 @@ $ npm run start:prod
 ```
 
 
-## Running the app
+## Test
  go to /test directory
 ```bash
 $ npm run test
