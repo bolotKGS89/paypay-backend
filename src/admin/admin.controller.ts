@@ -1,6 +1,6 @@
 import { Controller, Get, Res, HttpStatus, Delete, Param, Post, Body, Put } from '@nestjs/common';
 import { AdminDbService } from './admin.db.service';
-import {Employee} from '../dtos/EmployeeDto';
+import {EmployeeDto} from '../dtos/EmployeeDto';
 
 @Controller('employees')
 export class AdminController {
@@ -18,13 +18,13 @@ export class AdminController {
   }
 
   @Post()
-  saveEmployee(@Body() employee: Employee, @Res() res) {
-    res.status(HttpStatus.OK).json({'inserted': true});
+  saveEmployee(@Body() employee: EmployeeDto, @Res() res) {
+    res.status(HttpStatus.OK).json(employee.name);
   }
 
   @Put()
-  updateEmployee(@Body() employee: Employee, @Res() res) {
-    const updatedEmployee = this.adminDbService.deleteEmployee(employee.id);
+  updateEmployee(@Body() employee: EmployeeDto, @Res() res) {
+    const updatedEmployee = this.adminDbService.updateEmployee(employee.id);
     res.status(HttpStatus.OK).json(updatedEmployee.name);
   }
 }
