@@ -7,11 +7,11 @@ export class FeedbackDbService {
   private FEEDBACK_LIST:
       Array<FeedbackDto>
       = [
-      {id: 1, comment: Comment.INEXPERIENCED, feedbackText: 'Good dev'},
-      {id: 2, comment: Comment.NOT_BAD, feedbackText: 'Average manager'},
-      {id: 3, comment: Comment.NOT_BAD, feedbackText: 'Newbie'},
-      {id: 4, comment: Comment.WELL_DONE, feedbackText: 'Talented tester'},
-      {id: 5, comment: Comment.WELL_DONE, feedbackText: 'Good dev'}
+      {id: 1, name: 'Jon Jones', comment: Comment.INEXPERIENCED, feedbackText: 'Good dev'},
+      {id: 2, name: 'Jacques Audiard', comment: Comment.NOT_BAD, feedbackText: 'Average manager'},
+      {id: 3, name: 'Sergey Ivanov', comment: Comment.NOT_BAD, feedbackText: 'Newbie'},
+      {id: 4, name: 'Carlos Saucedo', comment: Comment.WELL_DONE, feedbackText: 'Talented tester'},
+      {id: 5, name: 'Thomas Wurz', comment: Comment.WELL_DONE, feedbackText: 'Good dev'}
     ];
 
   getAllEmployees(): Array<FeedbackDto> {
